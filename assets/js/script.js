@@ -2,8 +2,8 @@ $(document).ready(function() {
     // check for button clicks inside an on click
     $(".saveBtn").on("click", function() {
     // grab my values for time and text
-    var value = 
-    var time = 
+    var value = document.querySelector(".textInput")
+    var time = today.getHours();
 
     // save them to local storage 
     localStorage.setItem(time, value)
@@ -11,6 +11,9 @@ $(document).ready(function() {
 
     // write a function to update the hours in the time blocks
     // get current time use moment
+    var currentTime = new Date();
+    $("#currentDay").text(currentTime)
+    console.log(currentTime)
 
     // loop over out time blocks hint: (look up .each or .foreach)
 
