@@ -1,20 +1,25 @@
 $(document).ready(function() {
-    // check for button clicks inside an on click
+    // save button for text inputted
     $(".saveBtn").on("click", function() {
     // grab my values for time and text
     var value = $(this).siblings(".textInput").val();
-    var time = $(this).attr("id");
+    var time = $(this).parent().attr("id");
 
-    // save them to local storage 
+    // saved to local storage 
     localStorage.setItem(time, value)
+    console.log(time)
     })
+
+    // current day
+    var currentDay = new Date();
+    $("#currentDay").text(currentDay)
+    console.log(currentDay)
 
     // write a function to update the hours in the time blocks
     // get current time use moment
 
-
     // loop over out time blocks hint: (look up .each or .foreach)
-
+   
     // check to see if we have moved past the current time
 
     // if
@@ -31,7 +36,27 @@ $(document).ready(function() {
     // remove class (past)
     // remove class (present)
     // add class (future)
+    function presentTime() {
+       var currentHour = moment().hour();
+       $(".row").each(function() {
+           var hourBlock = $(this).attr("id").split(".hour");
 
+        if (hourBlock < currentHour) {
+            $(this).addClass("past");
+        }
+        else if (hourBlock === currentHour) {
+            $(this).addClass("present");
+            $(this).removeClass("past");
+            $(this).removeClass("future");
+        }
+        else {
+            $(this).addClass("future");
+            $(this).removeClass("past");
+            $(this).removeClass("present");
+        }
+      });
+    }
+    presentTime();
     //load any saved data from local storage 
 
     $("#hour-9.textInput").val(localStorage.getItem("hour-9"));
@@ -46,13 +71,6 @@ $(document).ready(function() {
     $("#hour-18.textInput").val(localStorage.getItem("hour-18"));
     $("#hour-19.textInput").val(localStorage.getItem("hour-19"));
     $("#hour-20.textInput").val(localStorage.getItem("hour-20"));
-
-
-    // display current day on page (check in html "current day") use moment 
-
-    var currentTime = moment();
-    $("#currentDay").text(currentTime)
-    console.log(currentTime)
 
 
 
