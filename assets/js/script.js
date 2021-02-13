@@ -18,23 +18,22 @@ $(document).ready(function() {
     // write a function to update the hours in the time blocks
     // get current time use moment
 
-    // looping over time blocks hint: (look up .each or .foreach)
+    // looping over time blocks hint:
    // adding function to show the past, future and current time
 
     function presentTime() {
        var currentHour = moment().hour();
        console.log(currentHour)
        $(".row").each(function() {
-           var hourBlock = $(this).attr("id");
+           var hourBlock = $(this).attr("id").split("-")[1];
            console.log(hourBlock)
 
         if (hourBlock < currentHour) {
             $(this).addClass("past");
         }
-        else if (hourBlock === currentHour) {
+        else if (hourBlock == currentHour) {
             $(this).addClass("present");
             $(this).removeClass("past");
-            $(this).removeClass("future");
         }
         else {
             $(this).addClass("future");
