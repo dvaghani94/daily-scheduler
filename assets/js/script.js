@@ -25,7 +25,7 @@ $(document).ready(function() {
        var currentHour = moment().hour();
        console.log(currentHour)
        $(".row").each(function() {
-           var hourBlock = $(this).attr("id").split("-")[1];
+           var hourBlock = $(this).attr("id");
            console.log(hourBlock)
 
         if (hourBlock < currentHour) {
