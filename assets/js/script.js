@@ -15,10 +15,7 @@ $(document).ready(function() {
     $("#currentDay").text(currentDay)
     console.log(currentDay)
 
-    // write a function to update the hours in the time blocks
-    // get current time use moment
-
-    // looping over time blocks hint:
+    // looping over time blocks
    // adding function to show the past, future and current time
 
     function presentTime() {
