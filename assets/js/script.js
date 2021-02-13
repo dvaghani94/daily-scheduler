@@ -4,6 +4,7 @@ $(document).ready(function() {
     // grab my values for time and text
     var value = $(this).siblings(".textInput").val();
     var time = $(this).parent().attr("id");
+    var hour = ["9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
 
     // saved to local storage 
     localStorage.setItem(time, value)
@@ -17,6 +18,11 @@ $(document).ready(function() {
 
     // write a function to update the hours in the time blocks
     // get current time use moment
+    function updateHour() {
+        for(var i = 0; i < hour.length; i++) {
+            
+        }
+    }
 
     // loop over out time blocks hint: (look up .each or .foreach)
    
@@ -39,10 +45,13 @@ $(document).ready(function() {
     function presentTime() {
        var currentHour = moment().hour();
        $(".row").each(function() {
-           var hourBlock = $(this).attr("id").split(".hour");
+           var hourBlock = $(this).attr("id")
+           console.log(hourBlock)
 
         if (hourBlock < currentHour) {
             $(this).addClass("past");
+            $(this).removeClass("future");
+            $(this).removeClass("present");
         }
         else if (hourBlock === currentHour) {
             $(this).addClass("present");
